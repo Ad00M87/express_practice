@@ -15,4 +15,21 @@ app.get('/products', function(req, res) {
   });
 });
 
+app.get('/products/:id', function(req, res) {
+  fs.readFile('products.json', 'utf8', function(err, data) {
+    var productsParsed = JSON.parse(data);
+    var product = productsParsed.filter( function(obj) {
+      return obj.id === parseInt(req.params.id);
+    });
+
+    if (product.length)
+      product = product[0];
+    else
+      product = null;
+
+    res.locals = { product: product };
+    res.render('product.ejs');
+  });
+});
+
 app.listen(8000);
