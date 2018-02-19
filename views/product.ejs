@@ -1,8 +1,13 @@
 <a href='/products'>Back</a>
 <% if(product) { %>
    <h1><%= product.name %></h1>
+   <hr />
    <h3><%= product.description %></h3>
+   <hr />
    <h3>$<%= product.base_price %></h3>
 <% } else { %>
    <h1>Product not found</h1>
 <% } %>
+   <p>All rights reserved. Products purchased are final, no returns</p>
+
+<!-- this is weird -->
